@@ -1,0 +1,12 @@
+@use "../../assets/scss/" as *;
+
+.logo-container {
+    @include flex(center, center);
+    height: 100px;
+    width: auto;
+    margin: 0 auto;
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }

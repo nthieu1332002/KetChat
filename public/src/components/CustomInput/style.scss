@@ -1,0 +1,19 @@
+@use "../../assets/scss/" as *;
+
+// .custom-input {
+//   width: 100%;
+input {
+
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  border: 2px solid $primary-color-6;
+  outline: none;
+  background-color: transparent;
+  color: $primary-color-1;
+  font-size: 1rem;
+  &::placeholder {
+    color: $primary-color;
+  }
+}
+// }
