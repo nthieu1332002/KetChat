@@ -1,0 +1,74 @@
+@use "../../assets/scss/" as *;
+
+.chat-page {
+  height: 100vh;
+  width: 100vw;
+  background-color: $primary-color-2;
+  padding: 1rem;
+  &_container {
+    display: flex;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: $primary-color-7;
+    .side-bar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30%;
+      .logo-wrapper {
+        padding: 5px;
+      }
+      .user-info {
+        background: $primary-color-7;
+        height: 10%;
+        padding: 1rem;
+        display: flex;
+        .avatar-account {
+          margin-right: 1rem;
+          @include flex(center, center);
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          overflow: hidden;
+          background: rgb(255, 255, 255);
+          img {
+            height: 100%;
+            width: auto;
+          }
+        }
+        .logout-button {
+          @include flex(center, center);
+          margin-left: auto;
+          border-radius: 50%;
+          height: 40px;
+          width: 40px;
+          background-color: $primary-color-1;
+          cursor: pointer;
+          transition: 0.2s;
+          &:hover {
+            background-color: $primary-color-3;
+            .icon {
+              color: $primary-color-2;
+            }
+          }
+          .icon {
+            color: $primary-color-2;
+            font-size: 15px;
+          }
+        }
+        .username-account {
+          @include flex(center, center);
+        }
+      }
+    }
+    .chat-main {
+      background-color: $primary-color-2;
+      width: 50%;
+    }
+    .chat-info {
+      background-color: $primary-color-7;
+      width: 20%;
+    }
+  }
+}

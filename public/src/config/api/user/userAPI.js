@@ -8,6 +8,19 @@ const userAPI = {
         };
 
         return api.post(url, body);
+    },
+    registerAPI: (data) => {
+        const url = `/api/auth/register`;
+
+        const body = {
+            ...data,
+        };
+        return api.post(url, body);
+    },
+    getAllUserAPI: ({id}) => {
+        console.log("id", id)
+        const url =`/api/auth/getAllUsers/${id}`;
+        return api.get(url)
     }
 }
 
