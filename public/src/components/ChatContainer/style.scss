@@ -1,1 +1,77 @@
 @use "../../assets/scss/" as *;
+
+.chat-main {
+  background-color: $primary-color-2;
+  width: 50%;
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: $primary-color-7;
+    padding: 10px 15px;
+    &__info {
+      display: flex;
+      gap: 1rem;
+      &__user {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        &__username {
+          font-weight: bold;
+          font-size: 20px;
+        }
+      }
+    }
+    &__action {
+      @include flex(center, center);
+      gap: 1rem;
+      &__item {
+        @include flex(center, center);
+        background-color: $primary-color-9;
+        padding: 10px;
+        border-radius: 50%;
+        cursor: pointer;
+        &:hover {
+          color: $primary-color-8;
+          background-color: $primary-color-10;
+        }
+      }
+    }
+  }
+  .chat-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: scroll;
+    height: 600px;
+    padding: 0 1rem 1rem;
+    &::-webkit-scrollbar {
+      background-color: $primary-color-10;
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb  {
+      background-color: $primary-color-9;
+      border-radius: 15px;
+    }
+    .message {
+      display: flex;
+      font-size: 17px;
+      &.send {
+        justify-content: flex-end;
+        .content {
+          background-color: $primary-color-5;
+        }
+      }
+      &.receive {
+        .content {
+          background-color: $primary-color-9;
+        }
+      }
+      .content {
+        border-radius: 15px;
+        max-width: 70%;
+        overflow-wrap: break-word;
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use "../../assets/scss/" as *;
+
+.chat-input {
+  padding: 1rem;
+  display: flex;
+  &__choose-image {
+    @include flex(center, center);
+    padding: 1rem;
+    border-radius: 10px 0 0 10px;
+    background-color: $primary-color-9;
+  }
+  &__text {
+    display: flex;
+    width: 100%;
+    &__emoji {
+      position: relative;
+      @include flex(center, center);
+      padding: 1rem;
+      background-color: transparent;
+      border: 1px solid $primary-color-9;
+      border-left: none;
+      .emoji {
+        cursor: pointer;
+        &:hover {
+          color: $primary-color-5;
+        }
+      }
+      .emoji-picker {
+        position: absolute;
+        top: 0;
+        translate: 0 -100%;
+      }
+    }
+    input {
+      color: $primary-color-1;
+      background-color: transparent;
+      width: 100%;
+      border: 1px solid $primary-color-9;
+      border-right: none;
+      border-radius: 0;
+      word-wrap: break-word;
+      vertical-align: top;
+      &::placeholder {
+        color: $primary-color-1;
+      }
+    }
+  }
+  &__send {
+    @include flex(center, center);
+    border: none;
+    outline: none;
+    padding: 1rem;
+    background-color: $primary-color-9;
+    border-radius: 0 10px 10px 0;
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover {
+      color: $primary-color-5;
+      background-color: $primary-color-1;
+    }
+  }
+}

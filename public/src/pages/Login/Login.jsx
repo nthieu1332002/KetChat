@@ -7,7 +7,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./validate.js";
 import TurnBack from "../../components/TurnBack/TurnBack";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
 import userAPI from "../../config/api/user/userAPI";
 import Cookies from 'js-cookie'
 
@@ -22,7 +21,6 @@ const Login = () => {
     resolver: yupResolver(schema),
   });
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     await loginAPI({
@@ -30,7 +28,6 @@ const Login = () => {
       password: data.password,
     })
       .then((res) => {
-        console.log(res);
         if (res.status === false) {
           toast.error(res.msg);
         }
@@ -39,6 +36,7 @@ const Login = () => {
           expireDate.setDate(expireDate.getDate() + 1);
           Cookies.set("token", res.token, { expires: 1, path: ''})
           Cookies.set("userId", res.user._id, { expires: 1, path: ''})
+          Cookies.set("username", res.user?.username, { expires: 1, path: ''})
           toast.success("Login successfully!");
           navigate("/chat");
         }

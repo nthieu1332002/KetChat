@@ -24,19 +24,7 @@
         height: 10%;
         padding: 1rem;
         display: flex;
-        .avatar-account {
-          margin-right: 1rem;
-          @include flex(center, center);
-          height: 50px;
-          width: 50px;
-          border-radius: 50%;
-          overflow: hidden;
-          background: rgb(255, 255, 255);
-          img {
-            height: 100%;
-            width: auto;
-          }
-        }
+        gap: 1rem;
         .logout-button {
           @include flex(center, center);
           margin-left: auto;
@@ -58,13 +46,14 @@
           }
         }
         .username-account {
-          @include flex(center, center);
+          width: 250px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-transform: capitalize;
+          @include flex(null, center);
         }
       }
-    }
-    .chat-main {
-      background-color: $primary-color-2;
-      width: 50%;
     }
     .chat-info {
       background-color: $primary-color-7;

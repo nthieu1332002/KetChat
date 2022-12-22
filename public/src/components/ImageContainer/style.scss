@@ -1,0 +1,7 @@
+@use "../../assets/scss/" as *;
+
+.img-container {
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: white;
+}

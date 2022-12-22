@@ -18,7 +18,6 @@ const userAPI = {
         return api.post(url, body);
     },
     getAllUserAPI: ({id}) => {
-        console.log("id", id)
         const url =`/api/auth/getAllUsers/${id}`;
         return api.get(url)
     }
