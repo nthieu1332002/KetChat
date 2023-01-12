@@ -1,62 +1,95 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./style.scss";
 import logo from "../../assets/images/brand.png";
 import ImageContainer from "../ImageContainer/ImageContainer";
-const UserContact = ({ socket, contacts, changeChat }) => {
-  const [isActive, setIsActive] = useState(0);
-  const [newMsg, setNewMsg] = useState([]);
-  console.log("contacts", contacts);
-  console.log("newMsg", newMsg);
-  const handleChangeActive = (index, item) => {
-    setIsActive(index);
-    changeChat(item);
-  };
+import { FaCircle } from "react-icons/fa";
+import { RiCheckDoubleFill } from "react-icons/ri";
+import moment from "moment";
 
-  useEffect(() => {
-    if (socket.current) {
-      socket.current.on("msg-receive", (data) => {
-        console.log("datadddd", data);
-        setNewMsg(data);
-      });
-    }
-  }, [socket.current]);
+moment.updateLocale("en", {
+  relativeTime: {
+    future: "in %s",
+    past: "%s ago",
+    s: "1 m",
+    ss: "%d seconds",
+    m: "1 m",
+    mm: "%d m",
+    h: "1 h",
+    hh: "%d h",
+    d: "1 d",
+    dd: "%d d",
+    w: "1 w",
+    ww: "%d w",
+    M: "1 m",
+    MM: "%d m",
+    y: "1 y",
+    yy: "%d y",
+  },
+});
 
-
+const UserContact = ({ item, isOnline }) => {
   return (
-    <div className="user-contact">
-      <h4>All Messages</h4>
-      {contacts.map((item, index) => {
-        return (
-          <div
-            className={`user-contact__item ${
-              index === isActive ? "active" : ""
-            }`}
-            key={item._id}
-            onClick={() => handleChangeActive(index, item)}
-          >
-            <ImageContainer
-              avt={logo}
-              className={"user-contact__item__avatar"}
-              size={50}
-            />
+    <>
+      <ImageContainer
+        avt={logo}
+        className={"user-contact__item__avatar"}
+        isOnline={isOnline}
+        size={50}
+      />
 
-            <div className="user-contact__item__info">
-              <div className="contact-username">{item.username}</div>
-              {newMsg?.from === item._id ? (
-                <p className="contact-message">
-                  {newMsg.from}: {newMsg.msg}
-                </p>
-              ) : (
-                <p className="contact-message">
-                  {item.fromSelf ? `You` : item.username}: {item.lastMsg}
-                </p>
-              )}
-            </div>
-            <div className="user-contact__item__time">12:53</div>
-          </div>
-        );
-      })}
-    </div>
+      <div className="user-contact__item__info">
+        <div className="contact-username">{item.user.username}</div>
+        <div className="contact-message">
+          {!item.msgInfo ? (
+            <p>Say hi!</p>
+          ) : (
+            <>
+              <div
+                className={`contact-message__msg ${
+                  item.user._id !== item.msgInfo?.sender
+                    ? ""
+                    : item.msgInfo?.status === "unseen"
+                    ? "unseen"
+                    : ""
+                }`}
+              >
+                {item.user._id !== item.msgInfo?.sender ? (
+                  item.msgInfo?.message.image ? (
+                    "You sent an image"
+                  ) : (
+                    <>You:  {item.msgInfo?.message.text}</>
+                  )
+                ) : (
+                  item.msgInfo?.message.image ? (<>{item.user.username} sent a photo</>) : (<>{item.msgInfo?.message.text}</>)
+                )}
+              </div>
+              <span className="contact-message__split">-</span>
+              <span className="contact-message__time">
+                {moment(item.msgInfo?.createdAt)
+                  .startOf("minute")
+                  .fromNow(true)}
+              </span>
+            </>
+          )}
+        </div>
+      </div>
+      {item.user._id === item.msgInfo?.sender &&
+      item.msgInfo?.status === "unseen" ? (
+        <div className="msg-status-icon">
+          <FaCircle size={15} />
+        </div>
+      ) : (
+        ""
+      )}
+      {item.user._id !== item.msgInfo?.sender &&
+      item.msgInfo?.status === "seen" ? (
+        <div className="seen-msg-status-icon">
+          <RiCheckDoubleFill size={20} />
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 

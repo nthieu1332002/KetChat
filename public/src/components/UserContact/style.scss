@@ -2,7 +2,6 @@
 
 .user-contact {
   background-color: $primary-color-7;
-  height: 75%;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -17,7 +16,6 @@
     padding: 1rem;
     background-color: $primary-color-7;
     display: flex;
-    border-radius: 15px;
     cursor: pointer;
     transition: 0.2s;
     &:hover {
@@ -37,19 +35,38 @@
         font-size: 20px;
       }
       .contact-message {
+        display: flex;
         font-size: 15px;
         color: $primary-color-8;
-        width: 270px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
         padding: 5px 0;
+        &__msg {
+          max-width: 270px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          &.unseen {
+            color: $primary-color-5;
+          }
+        }
+        &__split {
+          padding: 0 5px;
+        }
+        &__time {
+          color: $primary-color-8;
+          white-space: nowrap;
+          font-weight: 300;
+        }
       }
     }
-    &__time {
+    .msg-status-icon {
       @include flex(center, center);
       margin-left: auto;
-      color: $primary-color-8;
+      color: $primary-color-5;
+    }
+    .seen-msg-status-icon {
+      @include flex(center, center);
+      margin-left: auto;
+      color: $primary-color-5;
     }
   }
 }

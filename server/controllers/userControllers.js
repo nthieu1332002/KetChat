@@ -50,31 +50,21 @@ module.exports.login = async (req, res, next) => {
 
 module.exports.getAllUsers = async (req, res, next) => {
     try {
-        console.log("req: ", req)
         const users = await User.find({ _id: { $ne: req.params.id } }, {
             username: 1,
             email: 1,
             avatarImage: 1,
             _id: 1,
         })
-        const userIds = await Promise.all(users.map(user => getLastMessage(req.params.id, user._id.valueOf())))
-        let user = users.map(e => {
-            let properties = {
-                "_id": e._id.valueOf(),
-                "username": e.username,
-                "email": e.email,
-                "lastMsg": "",
-                "fromSelf" : ""
-              };
-            let temp = userIds.find((element) => element.id === e._id.valueOf())
-            if (temp.message) {
-                properties.lastMsg = temp.message
-                properties.fromSelf = temp.fromSelf
-            }
-            return properties;
-        })
-
-        return res.json({ user })
+        let user =[]
+        for (let i = 0; i < users.length; i++) {
+            let lastMsg = await getLastMessage(req.params.id, users[i]._id.valueOf())
+            user = [...user, {
+                user: users[i],
+                msgInfo: lastMsg
+            }]
+        }
+        return res.json({ user });
     } catch (ex) {
         next(ex);
     }
@@ -86,12 +76,7 @@ const getLastMessage = async (from, to) => {
             $all: [from, to],
         },
     }).sort({ updatedAt: -1 });
-
-    return {
-        id: to,
-        fromSelf: msg.sender.toString() === from,
-        message: msg.message.text,
-    };
+    return msg
 
 }
 
@@ -99,4 +84,27 @@ const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '1d',
     })
+}
+
+
+module.exports.updateAvatar = async (req, res, next) => {
+    try {
+        const { userId, img } = req.body;
+
+        const result = await cloudinary.v2.uploader.upload(img, {
+            folder: "KetChatAvatar",
+            height: 240,
+            crop: "limit",
+            fetch_format: "jpg"
+        })
+        const user = await User.findByIdAndUpdate(userId, {
+            avatarImage: result.public_id
+        })
+        if (!user) {
+            return res.json({ status: false })
+        }
+        return res.json({ status: true });
+    } catch (ex) {
+        next(ex);
+    }
 }

@@ -1,7 +1,10 @@
-const { addMessage, getMessages } = require("../controllers/messageController.js");
+const { addMessage, getMessages, seenMessage, addImageMessage, getImageMessage } = require("../controllers/messageController.js");
 const router = require("express").Router();
 
 router.post("/addMsg/", addMessage);
 router.post("/getMsg/", getMessages);
-// router.post("/getLastMsg/", getLastMessage);
+router.post("/seenMsg/", seenMessage)
+router.post("/addImg/", addImageMessage)
+router.post("/getImg/", getImageMessage)
+
 module.exports = router;

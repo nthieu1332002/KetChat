@@ -1,7 +1,17 @@
 @use "../../assets/scss/" as *;
 
-.img-container {
+.img-outer-container {
+  position: relative;
   border-radius: 50%;
+  background: white;
   object-fit: contain;
-  background-color: white;
+  .online-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $online;
+  }
+  img {
+    border-radius: 50%;
+  }
 }

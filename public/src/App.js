@@ -8,15 +8,13 @@ import WelcomePage from "./pages/WelcomePage/WelcomePage"
 import { ToastContainer } from "react-toastify";
 import PrivateRoutes from "./config/PrivateRoutes"
 import "react-toastify/dist/ReactToastify.css";
-import Cookies from 'js-cookie'
 import ProtectedRoutes from './config/ProtectedRoutes'
 
 const App = () => {
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<ProtectedRoutes/>}>
+        <Route element={<ProtectedRoutes />}>
           <Route path="/" element={<WelcomePage />} exact></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/login" element={<Login />}></Route>

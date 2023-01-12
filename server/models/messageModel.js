@@ -5,18 +5,25 @@ const messageSchema = mongoose.Schema(
         message: {
             text: {
                 type: 'string',
-                required: true
+                default : ''
             },
+            image: {
+                type: 'string',
+                default : ''
+            }
         },
         users: Array,
         sender: {
             type: mongoose.Types.ObjectId,
             ref: 'User',
             required: true
+        },
+        status: {
+            type: 'string',
+            default: 'unseen'
         }
     },
     {
-
         timestamps: true,
     }
 )

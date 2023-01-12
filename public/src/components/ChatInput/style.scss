@@ -1,13 +1,56 @@
 @use "../../assets/scss/" as *;
 
 .chat-input {
-  padding: 1rem;
   display: flex;
+  margin-top: 0.5rem;
+  position: relative;
+  .preview-img-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 100px;
+    width: 100px;
+    padding: 4px;
+    translate: 0 -105%;
+    background-color: $primary-color-9;
+    border-radius: 15px;
+    img {
+      border-radius: 15px;
+      object-fit: cover;
+      height: auto;
+      max-width: 100%;
+      aspect-ratio: 1/1;
+    }
+    .remove-img {
+      @include flex(center, center);
+      position: absolute;
+      top: 0;
+      right: 0;
+      translate: 5% -10%;
+      padding: 5px;
+      background-color: $primary-color-7;
+      border-radius: 50%;
+      cursor: pointer;
+      &:hover {
+        background-color: $primary-color-9;
+      }
+    }
+  }
   &__choose-image {
     @include flex(center, center);
     padding: 1rem;
     border-radius: 10px 0 0 10px;
     background-color: $primary-color-9;
+    cursor: pointer;
+    input[type="file"] {
+      display: none;
+    }
+    &:hover {
+      .image-icon {
+        color: $primary-color-3;
+      }
+      background-color: $primary-color-10;
+    }
   }
   &__text {
     display: flex;

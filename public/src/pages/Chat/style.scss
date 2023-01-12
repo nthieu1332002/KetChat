@@ -1,23 +1,39 @@
 @use "../../assets/scss/" as *;
 
 .chat-page {
+  display: flex;
+  // align-items: center;
   height: 100vh;
   width: 100vw;
   background-color: $primary-color-2;
   padding: 1rem;
-  &_container {
+  &__container {
     display: flex;
     height: 100%;
-    border-radius: 15px;
+    width: 95%;
+    border-radius: 0 15px 15px 0;
     overflow: hidden;
     background-color: $primary-color-7;
     .side-bar {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      width: 30%;
+      width: 25%;
+      @include border(border-right);
+
+      // padding: 0 0 1rem 0;
       .logo-wrapper {
         padding: 5px;
+      }
+      .user-contact {
+        height: 100%;
+        &__list {
+          height: 100%;
+          margin-top: 1rem;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
       }
       .user-info {
         background: $primary-color-7;
@@ -25,26 +41,7 @@
         padding: 1rem;
         display: flex;
         gap: 1rem;
-        .logout-button {
-          @include flex(center, center);
-          margin-left: auto;
-          border-radius: 50%;
-          height: 40px;
-          width: 40px;
-          background-color: $primary-color-1;
-          cursor: pointer;
-          transition: 0.2s;
-          &:hover {
-            background-color: $primary-color-3;
-            .icon {
-              color: $primary-color-2;
-            }
-          }
-          .icon {
-            color: $primary-color-2;
-            font-size: 15px;
-          }
-        }
+        @include border(border-top);
         .username-account {
           width: 250px;
           white-space: nowrap;
@@ -54,10 +51,6 @@
           @include flex(null, center);
         }
       }
-    }
-    .chat-info {
-      background-color: $primary-color-7;
-      width: 20%;
     }
   }
 }

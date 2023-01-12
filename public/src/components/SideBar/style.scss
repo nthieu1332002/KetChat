@@ -1,0 +1,75 @@
+@use "../../assets/scss/" as *;
+
+.chat-page__side-bar {
+  @include flex(center, center);
+  @include border(border-right);
+  width: 5%;
+  border-radius: 15px 0 0 15px;
+  background-color: $primary-color-7;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .theme {
+      border-radius: 20px;
+      overflow: hidden;
+      height: 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, 0.136);
+      &.dark {
+        color: white;
+        background-color: #343c4d;
+      }
+      &.light {
+        color: yellow;
+        background-color: rgb(4, 235, 251);
+      }
+      &__wrapper {
+        @include flex(center, center);
+        gap: 0.5rem;
+        height: 100%;
+        img {
+          height: auto;
+          width: 27px;
+        }
+        &.light {
+          display: none;
+          font-size: 25px;
+          &.active {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+        &.dark {
+          display: none;
+          font-size: 20px;
+          &.active {
+            display: flex;
+            flex-direction: column;
+          }
+        }
+      }
+    }
+    .logout-button {
+      @include flex(center, center);
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      background-color: $primary-color-1;
+      cursor: pointer;
+      transition: 0.2s;
+      &:hover {
+        background-color: $primary-color-3;
+        .icon {
+          color: $primary-color-2;
+        }
+      }
+      .icon {
+        color: $primary-color-2;
+        font-size: 15px;
+      }
+    }
+  }
+}
