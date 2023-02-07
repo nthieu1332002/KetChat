@@ -5,12 +5,16 @@
   @include border(border-right);
   width: 5%;
   border-radius: 15px 0 0 15px;
-  background-color: $primary-color-7;
+  background-color: var(--primary-color-7);
+  @include tablet {
+    display: none;
+  }
   &__list {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     .theme {
+      position: relative;
       border-radius: 20px;
       overflow: hidden;
       height: 75px;
@@ -18,38 +22,63 @@
       flex-direction: column;
       justify-content: space-between;
       border: 1px solid rgba(255, 255, 255, 0.136);
-      &.dark {
-        color: white;
-        background-color: #343c4d;
-      }
-      &.light {
-        color: yellow;
-        background-color: rgb(4, 235, 251);
-      }
+      cursor: pointer;
+      transition: 0.5s;
       &__wrapper {
         @include flex(center, center);
         gap: 0.5rem;
         height: 100%;
+        .moon, .clouds {
+          position: absolute;
+          opacity: 0;
+          top: 0;
+          transition: transform 1s, opacity 0.8s;
+        }
+        .sun, .stars {
+          position: absolute;
+          opacity: 0;
+          bottom: 0;
+          transition: transform 1s, opacity 0.8s;
+        }
         img {
           height: auto;
           width: 27px;
         }
         &.light {
-          display: none;
           font-size: 25px;
           &.active {
-            display: flex;
-            flex-direction: column;
+            .sun {
+              opacity: 1;
+              transform: translateY(-150%);
+            }
+            .clouds {
+              opacity: 1;
+              transform: translateY(130%);
+            }
           }
         }
         &.dark {
-          display: none;
-          font-size: 20px;
+          font-size: 30px;
           &.active {
-            display: flex;
-            flex-direction: column;
+            .moon {
+              opacity: 1;
+              transform: translateY(150%);
+            }
+            .stars {
+              color:rgb(4, 148, 251);
+              opacity: 1;
+              transform: translateY(-110%) rotate(200deg);
+            }
           }
         }
+      }
+      &.dark {
+        color: white;
+        background-color: #3c4360;
+      }
+      &.light {
+        color: #feeb97;
+        background-color: #8ecbdb;
       }
     }
     .logout-button {
@@ -57,17 +86,17 @@
       border-radius: 50%;
       height: 40px;
       width: 40px;
-      background-color: $primary-color-1;
+      background-color: var(--primary-color-1);
       cursor: pointer;
       transition: 0.2s;
       &:hover {
-        background-color: $primary-color-3;
+        background-color: var(--primary-color-3);
         .icon {
-          color: $primary-color-2;
+          color: var(--primary-color-2);
         }
       }
       .icon {
-        color: $primary-color-2;
+        color: var(--primary-color-2);
         font-size: 15px;
       }
     }

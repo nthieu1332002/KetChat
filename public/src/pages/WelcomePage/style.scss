@@ -6,7 +6,7 @@
   @include flex(center, center);
   &__container {
     padding: 20px;
-    background-color: $primary-color-3;
+    background-color: var(--primary-color-3);
     border-radius: 15px;
     
     &__navigate {
@@ -20,19 +20,19 @@
         border-radius: 15px;
         padding: 13px 0;
         font-size: 18px;
-        color: $primary-color-1;
+        color: var(--primary-color-1);
         transition: 0.3s;
       }
       .login {
-        background-color: $primary-color-5;
+        background-color: var(--primary-color-5);
         &:hover {
-          background-color: $primary-color-6;
+          background-color: var(--primary-color-6);
         }
       }
       .register {
-        background-color: $primary-color-4;
+        background-color: var(--primary-color-4);
         &:hover {
-          background-color: $primary-color-6;
+          background-color: var(--primary-color-6);
         }
       }
     }

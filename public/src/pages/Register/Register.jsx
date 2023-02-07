@@ -8,6 +8,7 @@ import { schema } from "./validate.js";
 import TurnBack from "../../components/TurnBack/TurnBack";
 import { toast } from "react-toastify";
 import userAPI from "../../config/api/user/userAPI";
+
 import "./style.scss";
 
 const { registerAPI } = userAPI;
@@ -26,19 +27,20 @@ const Register = () => {
       username: data.username,
       email: data.email,
       password: data.password,
-    }).then((res) => {
-      if (res.status === false) {
-        toast.error(data.msg);
-      }
-      if (res.status === true) {
-        toast.success("Create account successfully!");
-        navigate("/login");
-      }
     })
-    .catch((err) => {
-      console.log("err", err);
-      toast.error(err.response.data.error.message);
-    });
+      .then((res) => {
+        if (res.status === false) {
+          toast.error(data.msg);
+        }
+        if (res.status === true) {
+          toast.success("Create account successfully!");
+          navigate("/login");
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+        toast.error(err.response.data.error.message);
+      });
   };
 
   return (

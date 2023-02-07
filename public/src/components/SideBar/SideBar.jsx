@@ -3,6 +3,7 @@ import { BsBoxArrowInLeft } from "react-icons/bs";
 import moon from "../../assets/images/moon.svg"
 import clouds from "../../assets/images/clouds.svg"
 import {BsCircleFill, BsStars } from "react-icons/bs";
+import { WiStars } from "react-icons/wi";
 import "./style.scss";
 
 const SideBar = ({ handleLogout }) => {
@@ -25,12 +26,12 @@ const SideBar = ({ handleLogout }) => {
       <div className="chat-page__side-bar__list">
         <div className={`theme ${theme === true ? 'dark' : 'light'}`} onClick={toggleTheme}>
           <div className={`theme__wrapper light ${theme === false ? 'active' : ''}`} >
-            <BsCircleFill/>
-            <img src={clouds} alt=""/>
+            <BsCircleFill className="sun"/>
+            <img src={clouds} alt="" className="clouds"/>
           </div>
           <div className={`theme__wrapper dark ${theme === true ? 'active' : ''}`}>
-            <BsStars />
-            <img src={moon} alt=""/>
+            <WiStars className="stars"/>
+            <img src={moon} alt="" className="moon"/>
           </div>
         </div>
         <div className="logout-button">

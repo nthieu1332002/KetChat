@@ -20,6 +20,13 @@ const userAPI = {
     getAllUserAPI: ({id}) => {
         const url =`/api/auth/getAllUsers/${id}`;
         return api.get(url)
+    },
+    updateAvatar: (data) => {
+        const url =`/api/auth/updateAvatar`;
+        const body = {
+            ...data,
+        };
+        return api.post(url, body);
     }
 }
 

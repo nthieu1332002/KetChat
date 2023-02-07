@@ -1,7 +1,7 @@
 @use "../../assets/scss/" as *;
 
 .user-contact {
-  background-color: $primary-color-7;
+  background-color: var(--primary-color-12);
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -14,15 +14,15 @@
   }
   &__item {
     padding: 1rem;
-    background-color: $primary-color-7;
+    background-color: var(--primary-color-12);
     display: flex;
     cursor: pointer;
     transition: 0.2s;
     &:hover {
-      background-color: $primary-color-9;
+      background-color: var(--primary-color-13);
     }
     &.active {
-      background-color: $primary-color-10;
+      background-color: var(--primary-color-10);
     }
     &__avatar {
       margin-right: 1rem;
@@ -32,12 +32,13 @@
       flex-direction: column;
       justify-content: space-between;
       .contact-username {
+        color: var(--primary-color-1);
         font-size: 20px;
       }
       .contact-message {
         display: flex;
         font-size: 15px;
-        color: $primary-color-8;
+        color: var(--primary-color-8);
         padding: 5px 0;
         &__msg {
           max-width: 270px;
@@ -45,14 +46,14 @@
           overflow: hidden;
           text-overflow: ellipsis;
           &.unseen {
-            color: $primary-color-5;
+            color: var(--primary-color-5);
           }
         }
         &__split {
           padding: 0 5px;
         }
         &__time {
-          color: $primary-color-8;
+          color: var(--primary-color-8);
           white-space: nowrap;
           font-weight: 300;
         }
@@ -61,12 +62,12 @@
     .msg-status-icon {
       @include flex(center, center);
       margin-left: auto;
-      color: $primary-color-5;
+      color: var(--primary-color-5);
     }
     .seen-msg-status-icon {
       @include flex(center, center);
       margin-left: auto;
-      color: $primary-color-5;
+      color: var(--primary-color-5);
     }
   }
 }

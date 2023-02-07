@@ -1,8 +1,8 @@
 @use "../../assets/scss/" as *;
 .turn-back {
     cursor: pointer;
-    color: $primary-color-1;
+    color: var(--primary-color-1);
     &:hover {
-      color: $primary-color-4;
+      color: var(--primary-color-4);
     }
   }

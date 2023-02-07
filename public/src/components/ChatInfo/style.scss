@@ -1,10 +1,13 @@
 @use "../../assets/scss/" as *;
 
 .chat-info {
+  @include tablet {
+    display: none;
+  }
   @include border(border-left);
   display: flex;
   flex-direction: column;
-  background-color: $primary-color-7;
+  background-color: var(--primary-color-12);
   // background-color: yellow;
   width: 25%;
   height: auto;
@@ -20,7 +23,6 @@
   &__avatar {
     position: relative;
     background-color: rgb(153, 3, 3);
-    padding: 1rem 0 0 0;
     border-radius: 5px;
     overflow: hidden;
     width: 100%;
@@ -28,7 +30,7 @@
     min-height: 240px;
     img {
       width: 100%;
-      height: auto;
+      height: 100%;
     }
     .username {
       position: absolute;
@@ -45,7 +47,7 @@
       text-transform: capitalize;
       font-size: 24px;
       font-weight: bold;
-      color: $primary-color-1;
+      color: #fff;
     }
   }
   &__media {
@@ -54,7 +56,6 @@
     gap: 1rem;
     padding-top: 1rem;
     @include border(border-top);
-
     h3 {
       font-size: 18px;
     }
@@ -67,10 +68,10 @@
       }
       .view-less {
         font-size: 15px;
-        color: $primary-color-6;
+        color: var(--primary-color-6);
         cursor: pointer;
         &:hover {
-          color: $primary-color-4;
+          color: var(--primary-color-4);
         }
       }
     }
@@ -82,13 +83,13 @@
       flex-wrap: wrap;
       width: 100%;
       flex-basis: 33.33%;
-      gap: 5px;
       &__item,
       .more {
         @include flex(center, center);
-        background-color: $primary-color-3;
-        height: 100px;
-        width: 100px;
+        background-color: var(--primary-color-3);
+        width: 33.33%;
+        padding: 5px;
+        aspect-ratio: 1/1;
         border-radius: 5px;
         overflow: hidden;
         cursor: pointer;
@@ -100,10 +101,12 @@
         .image-amount {
           font-size: 20px;
         }
+
       }
       .more:hover {
-        background-color: $primary-color-11;
+        background-color: var(--primary-color-11);
       }
     }
   }
+
 }

@@ -10,6 +10,6 @@
   .loading {
     display: block;
     margin: 1rem auto;
-    border-color: $primary-color-4;
+    border-color: var(--primary-color-4);
   }
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import avt from "../../assets/images/logo.png";
-import { HiPlus } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import "./style.scss";
 import Loading from "../Loading/Loading";
@@ -18,7 +17,6 @@ const ChatInfo = ({ currentChat, limit, setLimit, changeAvatar }) => {
   const loadLessImage = () => {
     setLimit(2);
   };
-
 
   return (
     <div className="chat-info">

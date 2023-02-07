@@ -1,0 +1,48 @@
+@use "../../assets/scss/" as *;
+
+.user-info {
+  background-color: var(--primary-color-12);
+  height: 60px;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  padding: 7px;
+  @include border(border-top);
+  &__avatar {
+    width: 15%;
+    position: relative;
+    &:hover {
+      .change-avatar {
+        visibility: visible;
+      }
+    }
+    img {
+      background-color: white;
+      border-radius: 50%;
+      width: auto;
+      height: 100%;
+      aspect-ratio: 1/1;
+    }
+  }
+  &__username {
+    width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    @include flex(null, center);
+  }
+  &__setting {
+    @include flex(center, center);
+    // background-color: yellow;
+    width: 15%;
+
+    padding-left: 0.3rem;
+    @include border(border-left);
+    color: #687278;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
+  }
+}

@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import BrandContainer from "../../components/BrandContainer/BrandContainer";
-import avt from "../../assets/images/brand.png";
+import brand from "../../assets/images/brand.png";
+import logo from "../../assets/images/logo.png";
+
 import UserContact from "../../components/UserContact/UserContact";
 import ChatContainer from "../../components/ChatContainer/ChatContainer";
 import { io } from "socket.io-client";
 import "./style.scss";
-import ImageContainer from "../../components/ImageContainer/ImageContainer";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllUser,
@@ -29,6 +29,8 @@ import newMsgSound from "../../assets/audio/newMessageSound.mp3";
 import messageAPI from "../../config/api/chat/messageAPI";
 import ChatInfo from "../../components/ChatInfo/ChatInfo";
 import SideBar from "../../components/SideBar/SideBar";
+import UserInfo from "../../components/UserInfo/UserInfo";
+import SettingModal from "../../components/SettingModal/SettingModal";
 const { seenMessageAPI } = messageAPI;
 
 const Chat = () => {
@@ -42,10 +44,12 @@ const Chat = () => {
   const [currentChat, setCurrentChat] = useState("");
   const userId = Cookies.get("userId");
   const username = Cookies.get("username");
+  const avatar = Cookies.get("avatar");
   const [sendPlay] = useSound(sendSound);
   const [newMsgPlay] = useSound(newMsgSound);
   const [onlineUser, setOnlineUser] = useState([]);
   const [limit, setLimit] = useState(2);
+  const [isOpenSetting, setIsOpenSetting] = useState(false);
 
   useEffect(() => {
     socket.current = io(process.env.REACT_APP_API);
@@ -194,13 +198,13 @@ const Chat = () => {
 
   return (
     <div className="chat-page">
-      <SideBar handleLogout={handleLogout}/>
+      <SideBar handleLogout={handleLogout} />
       <div className="chat-page__container">
         <div className="side-bar">
-          <div className="logo-wrapper">
-            <BrandContainer />
-          </div>
-
+          <picture className="side-bar__brand">
+            <source media="(max-width:1024px)" srcSet={logo} />
+            <img src={brand} alt="brand" />
+          </picture>
           <div className="user-contact">
             <h4>All Messages</h4>
             <div className="user-contact__list">
@@ -231,12 +235,12 @@ const Chat = () => {
             </div>
           </div>
 
-          <div className="user-info">
-            <ImageContainer avt={avt} className={"avatar-account"} size={50} />
-            <div className="username-account">
-              <h3>{username}</h3>
-            </div>
-          </div>
+          <UserInfo
+            username={username}
+            avatar={avatar}
+            isOpenSetting={isOpenSetting}
+            setIsOpenSetting={setIsOpenSetting}
+          />
         </div>
         <ChatContainer
           lastMsgRef={lastMsgRef}
@@ -253,6 +257,11 @@ const Chat = () => {
           setLimit={setLimit}
         />
       </div>
+      <SettingModal
+        avatar={logo}
+        isOpenSetting={isOpenSetting}
+        setIsOpenSetting={setIsOpenSetting}
+      />
     </div>
   );
 };

@@ -5,20 +5,42 @@
   width: 100vw;
   @include flex(center, center);
   &__container {
-    min-width: 450px;
+    @include tablet {
+      min-width: 300px;
+      padding: 3rem;
+    }
+    @include mobile {
+      min-width: 200px;
+      padding: 2rem;
+    }
+    min-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: 3rem 5rem;
-    background-color: $primary-color-3;
+    background-color: var(--primary-color-3);
     border-radius: 15px;
+    .brand-container {
+      @include flex(center, center);
+      width: 100%;
+      margin: 0 auto;
+      padding: 5px;
+      img {
+        transition: 0.2s;
+        width: auto;
+        height: 100px;
+        @include mobile {
+          transform: scale(0.9);
+        }
+      }
+    }
     span {
       text-transform: uppercase;
       .action {
-        color: $primary-color-6;
+        color: var(--primary-color-6);
         cursor: pointer;
         &:hover {
-          color: $primary-color-5;
+          color: var(--primary-color-5);
         }
       }
     }
@@ -28,13 +50,13 @@
       border-radius: 0.4rem;
       border: none;
       outline: none;
-      color: $primary-color-1;
-      background-color: $primary-color-6;
+      color: var(--primary-color-1);
+      background-color: var(--primary-color-6);
       text-transform: uppercase;
       font-weight: bold;
       transition: 0.3s;
       &:hover {
-        background-color: $primary-color-5;
+        background-color: var(--primary-color-5);
       }
     }
   }

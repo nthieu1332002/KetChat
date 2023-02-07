@@ -3,19 +3,53 @@
 $mobile-width: 600px;
 $tablet-width: 1024px;
 
+:root {
+  --primary-color: #230163;
+  --primary-color-1: #fff;
+  --primary-color-2: #131224;
+  --primary-color-3: #9786f4;
+  --primary-color-4: #9a24fe;
+  --primary-color-5: #9d17f6;
+  --primary-color-6: #8511d3;
+  --primary-color-7: #252425;
+  --primary-color-8: rgb(204, 204, 204);
+  --primary-color-9: rgba(137, 137, 137, 0.7);
+  --primary-color-10: rgba(115, 115, 115, 0.7);
+  --primary-color-11: #a091f3;
+  --primary-color-12: #252425;
+  --primary-color-13: rgba(137, 137, 137, 0.7);
+  --primary-color-14: rgb(36, 36, 36);
+  --border-color: rgba(255, 255, 255, 0.136);
 
-$primary-color: #230163;
-$primary-color-1: #fff;
-$primary-color-2: #131224;
-$primary-color-3: #9786f4;
-$primary-color-4: #9a24fe;
-$primary-color-5: #9d17f6;
-$primary-color-6: #8511d3;
-$primary-color-7: #252425;
-$primary-color-8: rgb(204, 204, 204);
-$primary-color-9: rgba(137, 137, 137, 0.7);
-$primary-color-10: rgba(115, 115, 115, 0.7);
-$primary-color-11: #a091f3;
+  --bg-chat-1: #131224;
+  --bg-chat-2: #131224;
+  --bg-chat-3: #131224;
+
+}
+
+body.light-mode {
+  --primary-color: #230163;
+  --primary-color-1: rgb(36, 36, 36);
+  --primary-color-2: #fff;
+  --primary-color-3: #9786f4;
+  --primary-color-4: #9a24fe;
+  --primary-color-5: #c980fa;
+  --primary-color-6: #8511d3;
+  --primary-color-7: #fff;
+  --primary-color-8: rgb(107, 107, 107);
+  --primary-color-9: rgba(255, 255, 255, 0.7);
+  --primary-color-10: #b3d5f5;
+  --primary-color-11: #a091f3;
+  --primary-color-12: #fafafa;
+  --primary-color-13: #eaf1f7;
+  --primary-color-14: #b3d5f5;
+
+  --border-color: rgba(130, 130, 130, 0.136);
+
+  --bg-chat-1: rgb(220, 178, 229);
+  --bg-chat-2: rgb(220, 182, 229);
+  --bg-chat-3: rgb(238, 238, 238);
+}
 
 $error: #c32e2e;
 $online: rgb(10, 185, 4);

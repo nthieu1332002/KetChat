@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import CustomInput from "../../components/CustomInput/CustomInput";
-import BrandContainer from "../../components/BrandContainer/BrandContainer";
+import BrandContainer from "../../components/BrandContainer/BrandContainer.jsx";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./validate.js";
@@ -32,11 +32,13 @@ const Login = () => {
           toast.error(res.msg);
         }
         if (res.status === true) {
+          console.log(res)
           const expireDate = new Date();
           expireDate.setDate(expireDate.getDate() + 1);
           Cookies.set("token", res.token, { expires: 1, path: ''})
           Cookies.set("userId", res.user._id, { expires: 1, path: ''})
           Cookies.set("username", res.user?.username, { expires: 1, path: ''})
+          Cookies.set("avatar", res.user?.avatarImage, { expires: 1, path: ''})
           toast.success("Login successfully!");
           navigate("/chat");
         }

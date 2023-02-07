@@ -3,6 +3,7 @@ import { FaCircle } from "react-icons/fa";
 import "./style.scss";
 
 const ImageContainer = ({ avt, className, size, isOnline }) => {
+  console.log("avt", avt)
   return (
     <div className={`img-outer-container ` + className}>
       {isOnline ? (
