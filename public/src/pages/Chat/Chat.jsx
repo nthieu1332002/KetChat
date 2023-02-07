@@ -40,16 +40,17 @@ const Chat = () => {
   const navigate = useNavigate();
   const { contacts, status } = useSelector((state) => state.contacts);
   const { messages } = useSelector((state) => state.messenger);
+  const { avatar } = useSelector((state) => state.user);
 
   const [currentChat, setCurrentChat] = useState("");
   const userId = Cookies.get("userId");
   const username = Cookies.get("username");
-  const avatar = Cookies.get("avatar");
   const [sendPlay] = useSound(sendSound);
   const [newMsgPlay] = useSound(newMsgSound);
   const [onlineUser, setOnlineUser] = useState([]);
   const [limit, setLimit] = useState(2);
   const [isOpenSetting, setIsOpenSetting] = useState(false);
+  console.log(isOpenSetting);
 
   useEffect(() => {
     socket.current = io(process.env.REACT_APP_API);
@@ -258,7 +259,8 @@ const Chat = () => {
         />
       </div>
       <SettingModal
-        avatar={logo}
+        userId={userId}
+        avatar={avatar ? avatar : logo}
         isOpenSetting={isOpenSetting}
         setIsOpenSetting={setIsOpenSetting}
       />

@@ -42,7 +42,7 @@
     color: #687278;
     cursor: pointer;
     &:hover {
-      color: white;
+      color: var(--primary-color-1);
     }
   }
 }

@@ -1,5 +1,6 @@
 const User = require("../models/userModel");
 const Message = require("../models/messageModel");
+const {cloudinary} = require("../utils/cloudinary");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken')
 
@@ -90,17 +91,14 @@ const generateToken = (id) => {
 module.exports.updateAvatar = async (req, res, next) => {
     try {
         const { userId, img } = req.body;
-        console.log("userId", userId)
-        console.log("img", img);
         const result = await cloudinary.v2.uploader.upload(img, {
             folder: "KetChatAvatar",
             height: 240,
             crop: "limit",
             fetch_format: "jpg"
         })
-        console.log("result", result)
         const user = await User.findByIdAndUpdate(userId, {
-            avatarImage: result.public_id
+            avatarImage: result.url
         })
         if (!user) {
             return res.json({ status: false })

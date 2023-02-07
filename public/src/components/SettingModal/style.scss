@@ -7,8 +7,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all ease 1s;
   @include flex(center, center);
+  &.close {
+    display: none;
+  }
   .modal-content {
     position: relative;
     height: 500px;
@@ -16,21 +20,20 @@
     background-color: white;
     color: black;
     padding: 1rem;
+    border-radius: 15px;
     &__item {
-      background-color: aqua;
       .avatar-setting {
-        background-color: yellowgreen;
+        margin-bottom: 1rem;
         .avatar-wrapper {
           @include flex(center, center);
-          margin-top: 0.5rem;
           .avatar-container {
             position: relative;
             border: 2px solid rgb(232, 232, 232);
             border-radius: 15px;
             height: 100px;
             width: 100px;
-            background-color: aqua;
             @include flex(center, center);
+            overflow: hidden;
             img {
               width: auto;
               height: 100%;
@@ -39,23 +42,73 @@
               position: absolute;
               bottom: 0;
               right: 0;
+              cursor: pointer;
+              height: 20px;
+              width: 20px;
+              @include flex(center, center);
+              border-radius: 5px;
+              border: 2px solid rgb(232, 232, 232);
+              color: var(--primary-color-3);
+              background-color: white;
               input[type="file"] {
                 display: none;
               }
             }
           }
         }
+        
       }
       .chat-setting {
         // display: flex;
-        background-color: skyblue;
+        font-size: 17px;
+        &__item {
+          padding: 0.5rem 0;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          letter-spacing: 0.8px;
+          color: var(--primary-color-3);
+          .icon {
+            font-size: 25px;
+          }
+          &__title {
+            font-weight: bold;
+          }
+        }
+      }
+      h4 {
+        font-size: 18px;
+        color: rgb(32, 31, 31);
+        margin-bottom: 0.5rem;
       }
     }
+    .save {
+          margin-top: 1rem;
+          @include flex(center, center);
+          button {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 10px;
+            outline: none;
+            border: none;
+            color: white;
+            background-color: var(--primary-color-4);
+            border-radius: 5px;
+          }
+        }
     &__close {
       position: absolute;
       top: 0;
       right: 0;
       translate: 50% -50%;
+      background-color: white;
+      border-radius: 50%;
+      @include flex(center, center);
+      height: 25px;
+      width: 25px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
     }
   }
 }

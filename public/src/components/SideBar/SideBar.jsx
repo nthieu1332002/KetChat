@@ -8,7 +8,6 @@ import "./style.scss";
 
 const SideBar = ({ handleLogout }) => {
   const [theme, setTheme] = useState(true);
-  console.log("theme", theme)
   useEffect(() => {
     if (!theme) {
       document.body.className="light-mode"

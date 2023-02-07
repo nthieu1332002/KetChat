@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import avt from "../../assets/images/brand.png";
 import { MdSettings } from "react-icons/md";
 import "./style.scss";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeAvatar } from "../../store/userSlice";
 
 const UserInfo = ({ username, avatar, isOpenSetting, setIsOpenSetting }) => {
-  // const dispatch = useDispatch;
-  // const [selectedAvatar, setSelectedAvatar] = useState();
-  // // const [readyAvatar, setReadyAvatar] = useState();
-  // console.log("setSelectedAvatar", selectedAvatar);
 
   return (
     <div className="user-info">
