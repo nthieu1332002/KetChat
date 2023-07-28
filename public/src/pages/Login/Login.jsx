@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import BrandContainer from "../../components/BrandContainer/BrandContainer.jsx";
@@ -13,6 +13,10 @@ import Cookies from 'js-cookie'
 const { loginAPI } = userAPI;
 
 const Login = () => {
+  useEffect(() => {
+    alert("email: test@gmail.com, password: test12345");
+    console.log("object");
+  }, [])
   const {
     register,
     handleSubmit,
